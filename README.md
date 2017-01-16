@@ -27,6 +27,15 @@ See the [screenshots](/assets/) for more details.
 1. Upload the entire `wp-comments-manager` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
+## Changelog
+
+<b>Version 1.1</b> (16 Jan 2017)
+ * Make `Site` column to a hyperlink.
+ * Double-click a row to popup display the `Content` contents.
+
+<b>Version 1.0</b> (12 Jan 2017)
+ * Initial release.
+
 ## Requirements
 
 PHP 5.3+, PHP7 recommended for better performance, WordPress 3.0+, WordPress 4.6+ recommended for better experience.
