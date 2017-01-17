@@ -12,7 +12,7 @@ if ( !defined('ABSPATH') ) exit;
 
 function wpcm_menu() {
 	if (current_user_can('moderate_comments')) {
- 		add_menu_page("Comments Manager","Comments Manager", 'manage_options', 'wordpress-comments-manager', 'wpcm_page');
+ 		$page_hook = add_menu_page("Comments Manager","Comments Manager", 'manage_options', 'wordpress-comments-manager', 'wpcm_page');
 		add_action( 'admin_print_scripts-' . $page_hook, 'wpcm_script' );
 		add_action( 'admin_print_styles-' . $page_hook, 'wpcm_style' );
 	}
