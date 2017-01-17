@@ -13,7 +13,7 @@ if ( !isset( $order['approved'] ) ) { $order['approved'] = 'all'; }
 /** Main Functions. */
 function get_item($order) {
 	global $wpdb;
-	$sql = "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".$order['recid'];
+	$sql = "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".addslashes($order['recid']);
 	$record = $wpdb->get_row($sql);
 	$res             = Array();
 	$res['status']   = 'success';
@@ -165,11 +165,6 @@ function delete_comments($order) {
 	return $res;
 }
 
-function outputJSON($data) {
-	header("Content-Type: application/json;charset=utf-8");
-	echo json_encode($data);
-}
-
 switch ($order['cmd']) {
 	case 'get':
 		if ( array_key_exists('recid', $order) ) {
@@ -197,6 +192,6 @@ switch ($order['cmd']) {
 		$res['postData'] = $order;
 		break;
 }
-outputJSON($res);
+wp_send_json($res);
 exit;
 ?>
