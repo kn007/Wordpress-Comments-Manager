@@ -38,7 +38,7 @@ function wpcm_bar( $wp_admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'wpcm_bar', 99999 );
 
-/** Main Functions. */
+/** Main Functions */
 function get_item($order) {
     global $wpdb;
     $sql = "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']);

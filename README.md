@@ -6,13 +6,13 @@ Manage your comments faster, handle data more quickly.
 
 Contributors: kn007
 
-Requires at least: 3.0
+Requires at least: 3.5.2
 
 Tested up to: 4.7.1
 
 Donate Link: https://kn007.net/donate/
 
-Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment approval, comment moderation, comment spam, comment trash, comment delete
+Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment edit, comment approval, comment moderation, comment spam, comment trash, comment delete
 
 ## Description
 
@@ -28,6 +28,12 @@ See the [screenshots](/assets/) for more details.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 ## Changelog
+
+<b>Version 1.2</b> (18 Jan 2017)
+ * Code normalization.
+ * Make the code compatible with `JQuery 1`.
+ * Lessen the possibility of XSS vulnerabilities.
+ * Using nonce to prevent unauthorized access.
 
 <b>Version 1.1</b> (16 Jan 2017)
  * Make `Site` column to a hyperlink.
