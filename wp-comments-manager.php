@@ -30,7 +30,7 @@ function wpcm_style() {
     wp_enqueue_style( 'wpcm', plugins_url("wpcm.css", __FILE__), array(), "1.2" );
 }
 
-function wpcm_bar( $wp_admin_bar ) {
+function wpcm_bar($wp_admin_bar) {
     $wp_admin_bar->add_node( array(
         'id'    => 'wordpress-comments-manager',
         'title' => 'Comments Manager',
@@ -43,19 +43,19 @@ add_action( 'admin_bar_menu', 'wpcm_bar', 99999 );
 function wpcm_get_item($order) {
     global $wpdb;
     if (!isset($order['name'])) $order['name'] = '';
-	switch ($order['name']) {
-		case 'editform':
-			$record = $wpdb->get_row( "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
-			break;
-		case 'replyform':
-			$record = $wpdb->get_row( "SELECT `comment_ID`,`comment_post_ID` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
-			break;
-		default:
-			$res            = Array();
-			$res['status']  = 'error';
-			$res['message'] = '';
-			return $res;
-	}
+    switch ($order['name']) {
+        case 'editform':
+            $record = $wpdb->get_row( "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
+            break;
+        case 'replyform':
+            $record = $wpdb->get_row( "SELECT `comment_ID`,`comment_post_ID` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
+            break;
+        default:
+            $res            = Array();
+            $res['status']  = 'error';
+            $res['message'] = '';
+            return $res;
+    }
     $res              = Array();
     $res['status']    = 'success';
     $res['record']    = $record;
