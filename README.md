@@ -6,19 +6,19 @@ Manage your comments faster, handle data more quickly.
 
 Contributors: kn007
 
-Requires at least: 3.5.2
+Requires at least: 3.6
 
 Tested up to: 4.7.1
 
 Donate Link: https://kn007.net/donate/
 
-Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment edit, comment approval, comment moderation, comment spam, comment trash, comment delete
+Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment edit, comment reply, comment approval, comment moderation, comment spam, comment trash, comment delete
 
 ## Description
 
 Wordpress Comments Manager help you to quickly find comments and manage comments.
 
-It can be very convenient to review selected comments, open the comment in a new window, edit comment and delete comments.
+It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments.
 
 See the [screenshots](/assets/) for more details.
 
@@ -28,6 +28,10 @@ See the [screenshots](/assets/) for more details.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 ## Changelog
+
+<b>Version 1.3</b> (21 Jan 2017)
+ * Feature: reply comment.
+ * Review POST request.
 
 <b>Version 1.2</b> (18 Jan 2017)
  * Code normalization.
@@ -44,7 +48,7 @@ See the [screenshots](/assets/) for more details.
 
 ## Requirements
 
-PHP 5.3+, PHP7 recommended for better performance, WordPress 3.0+, WordPress 4.6+ recommended for better experience.
+PHP 5.3+, PHP7 recommended for better performance, WordPress 3.6+, WordPress 4.6+ recommended for better experience.
 
 ## About
 
