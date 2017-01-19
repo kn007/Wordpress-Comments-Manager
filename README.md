@@ -29,7 +29,7 @@ See the [screenshots](/assets/) for more details.
 
 ## Changelog
 
-<b>Version 1.3</b> (21 Jan 2017)
+<b>Version 1.3</b> (19 Jan 2017)
  * Feature: reply comment.
  * Review POST request.
 
@@ -52,4 +52,4 @@ PHP 5.3+, PHP7 recommended for better performance, WordPress 3.6+, WordPress 4.6
 
 ## About
 
-[kn007's blog](https://kn007.net) 
+[kn007's blog](https://kn007.net)
