@@ -29,6 +29,11 @@ See the [screenshots](/assets/) for more details.
 
 ## Changelog
 
+<b>Version 1.4</b> (21 Jan 2017)
+ * Using back Wordpress API to edit comment.
+ * Change: double-click a row to call reply dialog form.
+ * Add a hotkey to the form(`Ctrl+Enter` to submit).
+
 <b>Version 1.3</b> (19 Jan 2017)
  * Feature: reply comment.
  * Review POST request.

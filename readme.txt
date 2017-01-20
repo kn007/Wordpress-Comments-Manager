@@ -4,7 +4,7 @@ Donate Link: https://kn007.net/donate/
 Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment edit, comment reply, comment approval, comment moderation, comment spam, comment trash, comment delete
 Requires at least: 3.6
 Tested up to: 4.7.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,6 +44,11 @@ No technical skills needed.
 17. Main page with delete comment dialog menu on mobile.
 
 == Changelog ==
+
+= 1.4 =
+* Using back Wordpress API to edit comment.
+* Change: double-click a row to call reply dialog form.
+* Add a hotkey to the form(`Ctrl+Enter` to submit).
 
 = 1.3 =
 * Feature: reply comment.
