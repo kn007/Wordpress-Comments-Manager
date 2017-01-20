@@ -2,7 +2,7 @@
 /*
 Plugin Name:Wordpress Comments Manager
 Plugin URI: https://kn007.net/topics/new-wordpress-comment-management-system/
-Version: 1.3
+Version: 1.4-beta
 Description: Wordpress Comments Manager help you to quickly find comments and manage comments. It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments. See the screenshots for more details.
 Author: kn007
 Author URI: https://kn007.net/
@@ -10,7 +10,7 @@ Author URI: https://kn007.net/
 
 if ( !defined('ABSPATH') ) exit;
 
-if ( version_compare( $GLOBALS['wp_version'], '3.6', '<' ) ) wp_die('Wordpress version too old. Please upgrade your wordpress.'); 
+if ( version_compare( $GLOBALS['wp_version'], '3.6', '<' ) ) wp_die('Wordpress version too old. Please upgrade your wordpress.');
 
 function wpcm_menu() {
     if (current_user_can('moderate_comments')) {
@@ -45,7 +45,7 @@ function wpcm_get_item($order) {
     if (!isset($order['name'])) $order['name'] = '';
     switch ($order['name']) {
         case 'editform':
-            $record = $wpdb->get_row( "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
+            $record = $wpdb->get_row( "SELECT `comment_ID`,`comment_post_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
             break;
         case 'replyform':
             $record = $wpdb->get_row( "SELECT `comment_ID`,`comment_post_ID` FROM `".$wpdb->comments."` WHERE `comment_ID`=".absint($order['recid']) );
@@ -207,22 +207,19 @@ function wpcm_filter_comment($commentdata,$flag=0) {
         } else {
             return false;
         }
-        $comment_content = trim($commentdata['reply_content']);
+        $comment_content = isset($commentdata['reply_content']) ? trim($commentdata['reply_content']) : "";
         $comment_post_ID = isset($commentdata['comment_post_ID']) ? (int) $commentdata['comment_post_ID'] : 0;
         $comment_parent  = isset($commentdata['comment_ID']) ? absint($commentdata['comment_ID']) : 0;
+        do_action('pre_comment_on_post', $comment_post_ID);
         $data = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_parent','user_ID');
     }else{
-        $comment_author = trim(strip_tags($commentdata['comment_author']));
-        $comment_author_email = trim($commentdata['comment_author_email']);
-        $comment_author_url = trim($commentdata['comment_author_url']);
-        $comment_content = trim($commentdata['comment_content']);
-        $comment_author = apply_filters( 'pre_comment_author_name', $comment_author );
-        $comment_author_email = apply_filters( 'pre_comment_author_email', $comment_author_email );
-        $comment_author_url = apply_filters( 'pre_comment_author_url', $comment_author_url );
-        $comment_content = apply_filters( 'pre_comment_content', $comment_content );
-        $comment_content = apply_filters( 'comment_save_pre', strip_tags($comment_content) );
-        $data = compact('comment_author', 'comment_author_email', 'comment_author_url', 'comment_content');
-        $data = wp_unslash($data);
+        $comment_ID = isset($commentdata['comment_ID']) ? absint($commentdata['comment_ID']) : 0;
+        $comment_post_ID = isset($commentdata['comment_post_ID']) ? (int) $commentdata['comment_post_ID'] : 0;
+        $comment_author = isset($commentdata['comment_author']) ? trim(strip_tags($commentdata['comment_author'])) : "";
+        $comment_author_email = isset($commentdata['comment_author_email']) ? trim($commentdata['comment_author_email']) : "";
+        $comment_author_url = isset($commentdata['comment_author_url']) ? trim($commentdata['comment_author_url']) : "";
+        $comment_content = isset($commentdata['comment_content']) ? trim($commentdata['comment_content']) : "";
+        $data = compact('comment_ID', 'comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content');
     }
     return $data;
 }
@@ -276,9 +273,7 @@ function wpcm_reply_comment($order) {
 }
 
 function wpcm_edit_comment($order) {
-    global $wpdb;
     $res                = Array();
-    $comment_ID         = absint($order['record']['comment_ID']);
     if ( get_option( 'require_name_email' ) ) {
         if ( 6 > strlen( $order['record']['comment_author_email'] ) || '' == $order['record']['comment_author'] ) {
             $res['status']  = "error";
@@ -292,10 +287,9 @@ function wpcm_edit_comment($order) {
         return $res;
     }
     $data               = wpcm_filter_comment($order['record']);
-    $rval               = $wpdb->update( $wpdb->comments, $data, compact( 'comment_ID' ) );
+    $rval               = wp_update_comment($data);
     $res['status']      = ($rval !== false ? "success" : "error");
     $res['message']     = "";
-    clean_comment_cache($comment_ID);
     return $res;
 }
 
@@ -366,8 +360,7 @@ function wpcm_cmd_hook(){
                 default:
                     $res = Array();
                     $res['status']   = 'error';
-                    $res['message']  = 'Command "'.$_POST['cmd'].'" is not recognized.';
-                    $res['postData'] = $_POST;
+                    $res['message']  = 'This command is not recognized.';
                     break;
             }
         } else {
