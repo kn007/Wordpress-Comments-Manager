@@ -1,3 +1,5 @@
+![wp-comments-manager](/assets/wp-comments-manager.png?raw=true "Wordpress Comments Manager")
+
 # Wordpress Comments Manager
 
 Manage your comments faster, handle data more quickly.
