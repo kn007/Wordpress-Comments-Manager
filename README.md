@@ -53,7 +53,7 @@ See the [screenshots](/assets/) for more details.
 
 ## Requirements
 
-PHP 5.3+, PHP7 recommended for better performance, WordPress 3.6+, WordPress 4.6+ recommended for better experience.
+PHP 5.3+, PHP7 recommended for better performance, WordPress 3.6+, WordPress 4.7+ recommended for better experience.
 
 ## About
 
