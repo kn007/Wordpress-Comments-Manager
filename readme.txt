@@ -12,7 +12,11 @@ Manage your comments faster, handle data more quickly.
 
 == Description ==
 
-Wordpress Comments Manager help you to quickly find comments and manage comments. It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments. See the screenshots for more details.
+Wordpress Comments Manager help you to quickly find comments and manage comments.
+
+It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments.
+
+See the screenshots for more details.
 
 == Installation ==
 
