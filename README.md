@@ -1,6 +1,6 @@
-![wp-comments-manager](/assets/wp-comments-manager.png?raw=true "Wordpress Comments Manager")
-
 # Wordpress Comments Manager
+
+![wp-comments-manager](/assets/wp-comments-manager.png?raw=true "Wordpress Comments Manager")
 
 Manage your comments faster, handle data more quickly.
 
@@ -13,6 +13,8 @@ Requires at least: 3.6
 Tested up to: 4.7.1
 
 Donate Link: https://kn007.net/donate/
+
+About Plugin: https://kn007.net/topics/new-wordpress-comment-management-system/
 
 Tags: comments, view, spam, control, ajax, search, management, manager, comment search, comment view, comment edit, comment reply, comment approval, comment moderation, comment spam, comment trash, comment delete
 
