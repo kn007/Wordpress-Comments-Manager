@@ -33,6 +33,10 @@ See the [screenshots](/assets/) for more details.
 
 ## Changelog
 
+<b>Version 1.5</b> (22 Jan 2017)
+ * Query Optimization.
+ * Fix some bugs.
+
 <b>Version 1.4</b> (21 Jan 2017)
  * Using back Wordpress API to edit comment.
  * Change: double-click a row to call reply dialog form.

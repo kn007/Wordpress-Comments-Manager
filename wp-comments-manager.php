@@ -2,7 +2,7 @@
 /*
 Plugin Name:Wordpress Comments Manager
 Plugin URI: https://kn007.net/topics/new-wordpress-comment-management-system/
-Version: 1.4
+Version: 1.5
 Description: Wordpress Comments Manager help you to quickly find comments and manage comments. It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments. See the screenshots for more details.
 Author: kn007
 Author URI: https://kn007.net/
@@ -135,16 +135,16 @@ function wpcm_get_data($order) {
     // process sql
     $sql = "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content`,`comment_author_IP`,`comment_date`,`comment_agent` FROM `".$wpdb->comments."` WHERE ".$where;
     $cql = "SELECT count(1) FROM ($sql) as grid_list_1";
-	if ($order['offset'] == 0) {
-		$sql .= " ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
-	}else{
-		$sql .= " AND `comment_ID`<=(";
-		$sql .= "SELECT `comment_ID` FROM `wp_comments` WHERE ".$where." ORDER BY `comment_ID` DESC LIMIT ".$order['offset'].",1";
-		$sql .= ") ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
-	}
+    if ($order['offset'] == 0) {
+        $sql .= " ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
+    }else{
+        $sql .= " AND `comment_ID`<=(";
+        $sql .= "SELECT `comment_ID` FROM `wp_comments` WHERE ".$where." ORDER BY `comment_ID` DESC LIMIT ".$order['offset'].",1";
+        $sql .= ") ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
+    }
     $count = $wpdb->get_var($cql);
     $records = $wpdb->get_results($sql,ARRAY_A);
-    // fix data for w2ui
+    // fix some data for w2ui
     $last = ($order['limit']>$count ? $count : $order['limit']);
     for($i=0; $i<$last; $i++){
         $records[$i]['recid'] = $records[$i]['comment_ID'];
