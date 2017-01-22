@@ -130,8 +130,8 @@ function wpcm_get_data($order) {
     }
     if ($where === "") $where = "1=1";
     // prepare offset
-    if (!isset($order['limit']) || !is_int($order['limit']))   $order['limit']  = 100;
-    if (!isset($order['offset']) || !is_int($order['offset'])) $order['offset'] = 0;
+    $order['limit']  = isset($order['limit'])  ? (int) $order['limit']  : 100;
+    $order['offset'] = isset($order['offset']) ? (int) $order['offset'] : 0;
     // process sql
     $sql = "SELECT `comment_ID`,`comment_author`,`comment_author_email`,`comment_author_url`,`comment_content`,`comment_author_IP`,`comment_date`,`comment_agent` FROM `".$wpdb->comments."` WHERE ".$where;
     $cql = "SELECT count(1) FROM ($sql) as grid_list_1";
