@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name:Wordpress Comments Manager
+Plugin Name: Wordpress Comments Manager
 Plugin URI: https://kn007.net/topics/new-wordpress-comment-management-system/
 Version: 1.5
 Description: Wordpress Comments Manager help you to quickly find comments and manage comments. It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments. See the screenshots for more details.
@@ -23,11 +23,11 @@ add_action('admin_menu','wpcm_menu');
 
 function wpcm_script() {
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'wpcm', plugins_url("wpcm.js", __FILE__), 'jquery', "1.2" );
+    wp_enqueue_script( 'wpcm', plugins_url("wpcm.js", __FILE__), 'jquery', "1.5" );
 }
 
 function wpcm_style() {
-    wp_enqueue_style( 'wpcm', plugins_url("wpcm.css", __FILE__), array(), "1.2" );
+    wp_enqueue_style( 'wpcm', plugins_url("wpcm.css", __FILE__), array(), "1.5" );
 }
 
 function wpcm_bar($wp_admin_bar) {
