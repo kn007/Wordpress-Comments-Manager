@@ -10,7 +10,7 @@ Contributors: kn007
 
 Requires at least: 3.6
 
-Tested up to: 4.7.1
+Tested up to: 4.7.2
 
 Donate Link: https://kn007.net/donate/
 
@@ -33,8 +33,11 @@ See the [screenshots](/assets/) for more details.
 
 ## Changelog
 
+<b>Version 1.5.1</b> (11 Feb 2017)
+ * Fix some bugs.
+
 <b>Version 1.5</b> (22 Jan 2017)
- * Query Optimization.
+ * Query optimization.
  * Fix some bugs.
 
 <b>Version 1.4</b> (21 Jan 2017)

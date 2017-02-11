@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wordpress Comments Manager
 Plugin URI: https://kn007.net/topics/new-wordpress-comment-management-system/
-Version: 1.5
+Version: 1.5.1
 Description: Wordpress Comments Manager help you to quickly find comments and manage comments. It can be very convenient to review selected comments, open the comment in a new window, reply comment, edit comment and delete comments. See the screenshots for more details.
 Author: kn007
 Author URI: https://kn007.net/
@@ -139,7 +139,7 @@ function wpcm_get_data($order) {
         $sql .= " ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
     }else{
         $sql .= " AND `comment_ID`<=(";
-        $sql .= "SELECT `comment_ID` FROM `wp_comments` WHERE ".$where." ORDER BY `comment_ID` DESC LIMIT ".$order['offset'].",1";
+        $sql .= "SELECT `comment_ID` FROM `".$wpdb->comments."` WHERE ".$where." ORDER BY `comment_ID` DESC LIMIT ".$order['offset'].",1";
         $sql .= ") ORDER BY `comment_ID` DESC LIMIT ".$order['limit'];
     }
     $count = $wpdb->get_var($cql);
