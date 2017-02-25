@@ -33,6 +33,10 @@ See the [screenshots](/assets/) for more details.
 
 ## Changelog
 
+<b>Version 1.6</b> (26 Feb 2017)
+ * Add `Unanswered` tab, could show the comments that have not received a reply by internal user yet.
+ * Experimental feature: public comments search shortcode support(need enable `WPCM_ENABLE_EXPERIMENTAL_FEATURES` first).
+
 <b>Version 1.5.1</b> (11 Feb 2017)
  * Fix some bugs.
 
